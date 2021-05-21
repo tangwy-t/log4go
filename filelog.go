@@ -179,7 +179,7 @@ func (w *FileLogWriter) intRotate() error {
 	}
 	nfilename = nfilename + ".log"
 	// Open the log file
-	fd, err := os.OpenFile(nfilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0660)
+	fd, err := os.OpenFile(nfilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0664)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "OpenFile failed: %s\n", err.Error())
 		return err
