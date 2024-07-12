@@ -46,7 +46,9 @@ func (log Logger) LoadConfiguration(filename string) {
 		fmt.Fprintf(os.Stderr, "LoadConfiguration: Error: Could not read %q: %s\n", filename, err)
 		os.Exit(1)
 	}
-
+	log.ParseContent(filename,contents)
+}
+func (log Logger)ParseContent(filename string,contents []byte)  {
 	xc := new(xmlLoggerConfig)
 	if err := xml.Unmarshal(contents, xc); err != nil {
 		fmt.Fprintf(os.Stderr, "LoadConfiguration: Error: Could not parse XML configuration in %q: %s\n", filename, err)
